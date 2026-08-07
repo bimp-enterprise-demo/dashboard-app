@@ -1,4 +1,4 @@
-FROM node:18.19.1-alpine AS BUILD_IMAGE
+FROM docker.io/library/node:26@sha256:bde0dae02f2b12d2bce5ee72b2432f0e511767b7b2dc4dd3b064df11ae422fee AS BUILD_IMAGE
 
 # Set the platform to build image for
 ARG TARGETPLATFORM
@@ -25,7 +25,7 @@ COPY . ./
 RUN yarn build --mode production --no-clean
 
 # Production stage
-FROM node:20.11.1-alpine3.19
+FROM docker.io/library/node:26@sha256:bde0dae02f2b12d2bce5ee72b2432f0e511767b7b2dc4dd3b064df11ae422fee
 
 # Define some ENV Vars
 ENV PORT=8080 \

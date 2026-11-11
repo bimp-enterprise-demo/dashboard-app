@@ -1,4 +1,4 @@
-FROM docker.io/library/node:22.23.3 AS BUILD_IMAGE
+FROM docker.io/library/node:26.12.1-slim AS BUILD_IMAGE
 
 # Set the platform to build image for
 ARG TARGETPLATFORM
@@ -25,7 +25,7 @@ COPY . ./
 RUN yarn build --mode production --no-clean
 
 # Production stage
-FROM docker.io/library/node:22.23.3
+FROM docker.io/library/node:26.12.1-slim
 
 # Define some ENV Vars
 ENV PORT=8080 \
